@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+
+
+
+{% block content %}
+
+<center>
+<form class="add_your_class" method="POST" action="" >
+	{% csrf_token %}
+    <input class="add_your_class" type="search" name="search"> 
+    <button class="add_your_class" type="submit"> Search </button>
+</form>
+
+ <h2> completed : {{compl}}  <br>
+  incompleted : {{incom}}  </h2>
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>category</th>
+        <th>product</th>
+        <th>quantity</th>
+        <th>price</th>
+        <th>description</th>
+        <th>created_at</th>
+        <th>allocation</th>
+        <th>table_no</th>
+        <th>prepared_by</th>
+        <th>status</th>
+        <th>customer</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in table %}     
+      <tr class="danger">
+        <td>{{i.id}}</td>
+        <td>{{i.category_name}}</td>
+        <td>{{i.product_name}}</td>
+        <td>{{i.quantity}}</td>
+        <td>{{i.price}}</td>
+        <td>{{i.description}}</td>
+        <td>{{i.created_at}}</td>
+        <td>{{i.allocation}}</td>
+        <td>{{i.table_no}}</td>
+        <th>{{i.prepared_by}}</th>
+        <th>{{i.status}}</th>
+        <th>{{i.customer}}</th>
+        <td><a href="{% url 'order_read' i.id %}">Read</a></td>   <!-- /app/read/1 -->
+        <td><a href="{% url 'order_update' i.id %}">update</a></td>   <!--  /app/update/1 -->
+        <td><a href="{% url 'order_delete' i.id %}">delete</a></td> <!-- /app/read/1 -->
+        <td><a href="{% url 'order_completed' i.id %}">MARK_COMPLETE</a></td> <!-- /app/update order completed/1 -->
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+</div>
+</center>
+
+
+
+{% endblock content %}
+

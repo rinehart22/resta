@@ -1,0 +1,206 @@
+{% extends "base_menu.html" %}
+{% load static %}
+{% load mathfilters %}
+
+
+
+{% block go %}
+
+
+<section class="h-100" style="background-color: #eee;">
+
+  <div class="container h-100 py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+
+
+<div class="col-10">  
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="fw-normal mb-0 text-black"> Order's history</h3>
+
+          <center>  
+       {% if y %}     
+
+<form method="POST"> 
+  {% csrf_token %} 
+
+  From : <input type='date' name= 'fromdate'/>
+
+  To : <input type='date' name='todate'/>
+  <input type='submit' value='Search'/>
+
+</form>
+</center>
+          <div>
+            {% comment %} <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body"> {% endcomment %}
+              
+             
+
+              <iclass="fas fa-angle-down mt-1"></i></a></p>
+          </div>
+        </div>
+{% for i in orders %}
+  
+
+        <div class="card rounded-3 mb-4"> 
+          <div class="card-body p-4">
+
+            <div class="row d-flex justify-content-between align-items-center"> 
+
+                
+              <div class="col-md-2 col-lg-2 col-xl-2"> 
+                <img
+                  src="{{i.product_name.product_image.url}}"
+                  class="img-fluid rounded-3" alt="Cotton T-shirt">
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+
+                <p class="lead fw-normal mb-2">
+                  
+                  {{i.product_name.product_name}}
+                 
+                </p>
+
+                 Chef : {{i.prepared_by}}
+                
+                <p><span class="text-muted">order made on :</span> {{i.created_at}} <span class="text-muted"> </span></p>
+
+                
+              </div>
+              
+
+      
+         
+  <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                  
+<div class="p-0" > 
+</div>
+  <div class="mx-auto"  > Qty :  {{ i.quantity}}
+
+   
+
+     
+</div>
+</div>
+<div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                <h5 class="mb-0"> {{i.product_name.product_price}}</h5>
+               
+               
+              </div>  
+                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+
+                <a href="#" class="text-danger"><i > </i></a>
+              </div> 
+ </div>
+  </div>
+  
+</div>  
+
+ {% endfor %}
+
+
+{% endif %}
+
+
+<div>
+            {% comment %} <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body"> {% endcomment %}
+              
+
+              <iclass="fas fa-angle-down mt-1"></i></a></p>
+          </div>
+        </div>
+{% for i in orders %}
+  
+
+        <div class="card rounded-3 mb-4"> 
+          <div class="card-body p-4">
+
+            <div class="row d-flex justify-content-between align-items-center"> 
+
+                
+              <div class="col-md-2 col-lg-2 col-xl-2"> 
+                <img
+                  src="{{i.product_name.product_image.url}}"
+                  class="img-fluid rounded-3" alt="Cotton T-shirt">
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+
+                <p class="lead fw-normal mb-2">
+                  
+                  {{i.product_name.product_name}}
+                 
+                </p>
+
+                 Chef : {{i.prepared_by}}
+                
+                <p><span class="text-muted">order made on :</span> {{i.created_at}} <span class="text-muted"> </span></p>
+
+                
+              </div>
+              
+
+      
+         
+  <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                  
+<div class="p-0" > 
+</div>
+  <div class="mx-auto"  > Qty :  {{ i.quantity}}
+
+   
+
+     
+</div>
+</div>
+<div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                <h5 class="mb-0"> {{i.product_name.product_price}}</h5>
+               
+               
+              </div>  
+                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+
+                <a href="#" class="text-danger"><i > </i></a>
+              </div> 
+ </div>
+  </div>
+  
+</div>  
+{% endfor %}
+
+
+  {% comment %} <ul class="pagination justify-content-center">
+    {% if orders.has_previous %}
+
+    <li class="page-item"><a class="page-link" href="/orders/?page=1" tabindex="-1">first</a></li>
+
+    <li class="page-item"><a class="page-link" href="/orders/?page={{orders.previous_page_number}}" tabindex="-1">Previous</a></li>
+
+    {% endif %}
+    {% comment %} <li class="page-item">  page {{orders.has_previous}} of  {{orders.paginator.page_number}}
+    
+    </li> {% endcomment %}
+
+{% comment %} {% if orders.has_next %}
+    <li class="page-item"><a class="page-link" href="/orders/?page={{orders.next_page_number}}">Next</a></li>
+
+       {% endif %}
+  </ul>   {% endcomment %} 
+</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+
+
+  
+</div>
+</div>
+</section>  
+
+
+
+
+
+ {% endblock go  %}
+
+</body>
+</html>

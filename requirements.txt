@@ -1,0 +1,9 @@
+psycopg2-binary
+asgiref==3.5.0
+Django==4.0.3
+Pillow==9.0.1
+sqlparse==0.4.2
+tzdata==2022.1
+django-crispy-forms
+django-mathfilters
+whitenoise==5.3.0

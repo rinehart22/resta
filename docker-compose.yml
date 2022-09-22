@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  web:
+    volumes:
+      - static:/static
+    command: sh -c "/etc/init.d/cron start && python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput && python manage.py crontab add && exec gunicorn restaurant.wsgi:application --workers=4 --bind 0.0.0.0:8000 --timeout 1100"
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13.0-alpine
+    environment:
+      POSTGRES_PASSWORD: ''
+      POSTGRES_HOST_AUTH_METHOD: trust
+      PGDATA: /tmp
+
+volumes:
+  postgres_data:
+  static:

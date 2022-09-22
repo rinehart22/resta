@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+{% comment %} <a href="{% url 'chef_create' %}">CREATE CHEF</a> {% endcomment %}
+
+<!-- <center>
+ <h2> completed : {{compl}}  <br>
+  incompleted : {{incom}}  </h2>
+</center> -->
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>chef_name</th>
+        <th>chef_image</th>
+        <th>category_name</th>
+        <th>product_name</th>
+        <th>orders_completed</th>
+        <th>description</th>
+        <th>mobile</th>
+        <th>status</th>
+        <th>created_at</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in dynamic %}     
+      <tr class="danger">
+        <td>{{i.id}}</td>
+        <td>{{i.chef_name}}</td>
+        <td>{{i.chef_image}}</td>
+        <td>{{i.category_name}}</td>
+        <td>{{i.product_name}}</td>
+        <td>{{i.orders_completed}}</td>
+        <td>{{i.description}}</td>
+        <td>{{i.mobile}}</td>
+        <td>{{i.status}}</td>
+        <td>{{i.created_at}}</td>
+        <td><a href="{% url 'chef_read' i.id %}">Read</a></td>   <!-- /app/read/1 -->
+        <td><a href="{% url 'chef_update' i.id %}">update</a></td>   <!--  /app/update/1 -->
+        <td><a href="{% url 'chef_delete' i.id %}">delete</a></td> <!-- /app/read/1 -->
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+ 
+
+
+ 
+  
+
+
+
+  
+
+
+ <head>
+<base target="_parent">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.0/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap">
+
+    
+    <link rel="stylesheet" href="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.19.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.19.2/css/mdb.min.css">
+    
+    <link rel="stylesheet" href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/docs-app/css/compiled-addons-4.19.2.min.css">
+    <link rel="stylesheet" type="text/css" href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/mdb-plugins-gathered.min.css">
+
+</head> 
+
+<body>
+
+{% comment %} <div class="container">
+  <div class="row">
+    {% for i in dynamic %}
+    <div class="col">
+      <div class="card-deck" style="width: 35rem;">
+
+<div class="card">
+  <img class="card-img-top" src="{{i.chef_image.url}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{i.chef_name}}</h5>
+    <p class="card-text">{{i.description}}</p>
+    <a href="{% url 'chef_orders' i.id %}" class="btn btn-primary">orders</a>
+  </div> 
+
+
+   {% endfor %}
+
+    </div>
+  </div>
+</div>
+</div>  {% endcomment %}
+
+
+
+
+
+
+
+
+<div class="container my-4">
+
+<div class="heading_container heading_center psudo_white_primary mb_45">
+        <h2>
+           Our Chefs
+        </h2>
+      </div> <br><br>
+
+
+  <div class="row">
+    {% for i in dynamic %}
+          <div class="col-md-3">
+            <div class="card mb-1">
+              <img class="card-img-top" style='height:220px' src="{{i.chef_image.url}}"
+                   alt="Card image cap">
+              <div class="card-body ">
+                <h4 class="card-title text-dark">{{i.chef_name}}</h4>
+                <p class="card-text text-dark">
+                 {{i.description}}.</p>
+                <a href="{% url 'chef_orders' i.id %}" class="btn bg-warning">Orders</a>
+              </div>
+            </div>
+          </div>
+
+          {% endfor %}
+
+ </div>
+ </div>  
+</body>
+
+
+
+{% endblock content %}

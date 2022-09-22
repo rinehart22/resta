@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<a href="{% url 'order_view' %}">BACK TO ORDERS</a>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>category</th>
+        <th>product</th>
+        <th>quantity</th>
+        <th>price</th>
+        <th>description</th>
+        <th>created_at</th>
+        <th>allocation</th>
+        <th>table_no</th>
+        <th>prepared_by</th>
+        <th>status</th>
+        <th>customer</th>
+      </tr>
+    </thead>
+    <tbody>
+   
+      <tr class="danger">
+        <td>{{dynamic.id}}</td>
+        <td>{{dynamic.category_name}}</td>
+        <td>{{dynamic.product_name}}</td>
+        <td>{{dynamic.quantity}}</td>
+        <td>{{dynamic.price}}</td>
+        <td>{{dynamic.description}}</td>
+        <td>{{dynamic.created_at}}</td>
+        <td>{{dynamic.allocation}}</td>
+        <td>{{dynamic.table_no}}</td>
+        <th>{{dynamic.prepared_by}}</th>
+        <th>{{dynamic.status}}</th>
+        <th>{{dynamic.customer}}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
